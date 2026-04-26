@@ -9,10 +9,5 @@ const userSchema = new Schema({
 });
 
 
-userSchema.pre('save', async function (next) {
-    if (this.isModified('username')) {
-        this.username = this.username.toLowerCase();
-    }
-    next();
-});
+
 module.exports = mongoose.model('User', userSchema)
