@@ -9,7 +9,8 @@ const categories = [
 
 const expenseSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    currency: { type: Number },
+    amount: { type: Number, required: true },
+    currency: { type: String, required: true, enum: ['IQD', 'USD', 'EUR'] },
     Category: { type: String, enum: categories },
     description: { type: String },
     date: { type: Date },
