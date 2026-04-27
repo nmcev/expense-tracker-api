@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const connectToMongoDB = require("./mongoConfig");
 const logRequests = require('./middleware/LogRequests')
+
+// error middleware 
+const errorMiddleware = require('./middleware/errorMiddleware')
 // routes
 const authRoute = require('./routes/auth');
 
@@ -16,6 +19,9 @@ connectToMongoDB()
 
 
 app.use('/api', authRoute);
+
+//error middleware
+app.use(errorMiddleware)
 
 const PORT = 3000;
 app.listen(PORT, () => {
