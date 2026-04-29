@@ -1,0 +1,18 @@
+const express = require('express');
+const router = express.Router();
+const authenticateToken = require('../middleware/auth')
+const expenseController = require('../controllers/expenseController');
+
+// GET, get all expenses with all filters
+router.get('/', authenticateToken, expenseController.getExpenses);
+
+// GET, get single expense
+router.get('/:id', authenticateToken, expenseController.getSingleExpense);
+
+// PUT, update expense
+router.put('/:id', expenseController.createNewExpense);
+
+// POST, add new expense: 
+router.post('/new', authenticateToken, expenseController.createNewExpense);
+
+module.exports = router;
