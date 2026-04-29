@@ -10,7 +10,7 @@ router.get('/', authenticateToken, expenseController.getExpenses);
 router.get('/:id', authenticateToken, expenseController.getSingleExpense);
 
 // PUT, update expense
-router.put('/:id', expenseController.createNewExpense);
+router.put('/:id',authenticateToken ,expenseController.updateExpense);
 
 // POST, add new expense: 
 router.post('/new', authenticateToken, expenseController.createNewExpense);
