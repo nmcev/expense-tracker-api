@@ -10,7 +10,10 @@ router.get('/', authenticateToken, expenseController.getExpenses);
 router.get('/:id', authenticateToken, expenseController.getSingleExpense);
 
 // PATCH, update expense
-router.patch('/:id',authenticateToken ,expenseController.updateExpense);
+router.patch('/:id', authenticateToken, expenseController.updateExpense);
+
+// DELETE, delete expense
+router.delete('/:id', authenticateToken, expenseController.deleteExpense);
 
 // POST, add new expense: 
 router.post('/', authenticateToken, expenseController.createNewExpense);

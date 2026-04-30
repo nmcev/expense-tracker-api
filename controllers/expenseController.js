@@ -202,6 +202,37 @@ module.exports = {
             }
 
         }
+    ],
+
+    deleteExpense: [
+        async function (req, res, next) {
+
+            const expenseId = req.params.id;
+
+            if (!expenseId) return res.status(404).json({ message: "No Id found!" });
+
+            try {
+
+                const expense = await Expense.findOne({ _id: expenseId });
+
+                if (expense == null) return res.status(404).json({ message: "Expense Not Found" });
+
+                if (expense.user.toString() !== req.user.userId) {
+                    return res.status(403).json({ message: "Access Denied" });
+                }
+
+
+                await expense.deleteOne();
+
+                res.json({
+                    message: "Expense deleted successfully!"
+                })
+
+            } catch (e) {
+                next(e)
+            }
+
+        }
     ]
 }
 
