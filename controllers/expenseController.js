@@ -113,11 +113,12 @@ module.exports = {
 
                 const expense = await Expense.findOne({ _id: expenseId });
 
+                if (expense == null) return res.status(404).json({ message: "Expense Not Found" });
+
                 if (expense.user.toString() !== req.user.userId) {
                     return res.status(403).json({ message: "Access Denied" });
                 }
 
-                if (expense == null) return res.status(404).json({ message: "Expense Not Found" });
 
                 res.json({
                     expense
