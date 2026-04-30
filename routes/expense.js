@@ -13,6 +13,6 @@ router.get('/:id', authenticateToken, expenseController.getSingleExpense);
 router.patch('/:id',authenticateToken ,expenseController.updateExpense);
 
 // POST, add new expense: 
-router.post('/new', authenticateToken, expenseController.createNewExpense);
+router.post('/', authenticateToken, expenseController.createNewExpense);
 
 module.exports = router;
