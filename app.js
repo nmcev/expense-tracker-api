@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const connectToMongoDB = require("./mongoConfig");
 const logRequests = require('./middleware/LogRequests')
-
+const cors = require('cors')
 // error middleware 
 const errorMiddleware = require('./middleware/errorMiddleware')
 // routes
@@ -11,6 +11,13 @@ const expenseRoute = require('./routes/expense');
 
 // parse incoming json
 app.use(express.json());
+
+// use cors
+const corsOptions = {
+    origin: ['http://localhost:5173']
+}
+
+app.use(cors(corsOptions))
 
 //log requests
 app.use(logRequests);
