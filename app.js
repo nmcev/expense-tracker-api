@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const connectToMongoDB = require("./mongoConfig");
 const cors = require('cors')
+const morgan = require('morgan')
+
 // error middleware 
 const errorMiddleware = require('./middleware/errorMiddleware')
 // routes
@@ -20,6 +22,7 @@ app.use(cors(corsOptions))
 
 
 
+app.use(morgan('dev'));
 //connect to db
 connectToMongoDB()
 
