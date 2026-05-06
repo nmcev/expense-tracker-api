@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const connectToMongoDB = require("./mongoConfig");
-const logRequests = require('./middleware/LogRequests')
 const cors = require('cors')
 // error middleware 
 const errorMiddleware = require('./middleware/errorMiddleware')
@@ -19,8 +18,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-//log requests
-app.use(logRequests);
+
 
 //connect to db
 connectToMongoDB()
