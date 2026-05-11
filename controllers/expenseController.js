@@ -90,9 +90,7 @@ module.exports = {
                 }
 
                 allExpenses = await Expense.find(filter);
-                res.json({
-                    allExpenses
-                })
+                res.json(allExpenses)
             }
             catch (e) {
                 next(e)
