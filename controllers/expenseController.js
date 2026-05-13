@@ -118,9 +118,7 @@ module.exports = {
                 }
 
 
-                res.json({
-                    expense
-                })
+                res.json(expense)
 
             } catch (e) {
                 next(e)
